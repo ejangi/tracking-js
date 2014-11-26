@@ -43,18 +43,18 @@
 		analyticsDebugUrl = '//www.google-analytics.com/analytics_debug.js',
 		trackingId = meta( 'ga-trackingid' ) || null,
 		requires = meta( 'ga-requires' ).split( ',' ) || [],
-		debug = !!meta( 'ga-debug' ) || false,
-		trace = !!meta( 'ga-trace' ) || false,
+		debug = meta( 'ga-debug' ) || false,
+		trace = meta( 'ga-trace' ) || false,
 		campaignFields = [ 'campaignName', 'campaignSource', 'campaignMedium', 'campaignContent', 'campaignKeyword' ],
 		dimensions = metaslike( 'ga-dimension' ),
 		userId = meta( 'ga-userid' );
 
 	if ( trackingId !== null && trackingId.length > 0 ) {
-		if ( debug === true ) {
+		if ( debug && debug == "true" ) {
 			analyticsUrl = analyticsDebugUrl;
 		}
 
-		if ( trace === true ) {
+		if ( trace && trace == "true" ) {
 			window.ga_debug = { trace: true };
 		}
 
