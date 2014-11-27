@@ -39,6 +39,15 @@ var TrackingJS = ( function( window, document, undefined ) {
 		return proto;
 	};
 
+	var strTrailingDigits = function( string ) {
+		var digits = string.replace( /[^0-9]*/i, "" );
+		if ( digits.length > 0 ) {
+			return parseInt( digits );
+		} else {
+			return 0;
+		}
+	};
+
 	var analyticsUrl = "//www.google-analytics.com/analytics.js",
 		analyticsDebugUrl = "//www.google-analytics.com/analytics_debug.js",
 		linkidUrl = "//www.google-analytics.com/plugins/ua/linkid.js",
@@ -48,6 +57,7 @@ var TrackingJS = ( function( window, document, undefined ) {
 		trace = meta( "ga-trace" ) || false,
 		campaignFields = [ "campaignName", "campaignSource", "campaignMedium", "campaignContent", "campaignKeyword" ],
 		dimensions = metasLike( "ga-dimension" ),
+		metrics = metasLike( "ga-metrics" ),
 		userId = meta( "ga-userid" );
 
 	var init = (function() {
@@ -106,8 +116,14 @@ var TrackingJS = ( function( window, document, undefined ) {
 			}
 
 			for ( var j = 0; j < dimensions.length; j++ ) {
-				if ( meta( dimensions[i] ) ) {
-					ga( "set", dimensions[i], meta( dimensions[i] ) );
+				if ( meta( dimensions[j].name ) ) {
+					ga( "set", "dimension" + strTrailingDigits( dimensions[j].name ), meta( dimensions[j].name ) );
+				}
+			}
+
+			for ( var k = 0; k < metrics.length; k++ ) {
+				if ( meta( metrics[k].name ) ) {
+					ga( "set", "metric" + strTrailingDigits( metrics[k].name ), meta( metrics[k].name ) );
 				}
 			}
 			
@@ -129,6 +145,7 @@ var TrackingJS = ( function( window, document, undefined ) {
 		trace: trace,
 		campaignFields: campaignFields,
 		dimensions: dimensions,
+		metrics: metrics,
 		userId: userId,
 		window: window,
 		document: document
