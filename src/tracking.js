@@ -65,8 +65,10 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
 		})(window,document,"script",analyticsUrl,"ga");
 
-		// Double check that this is set correctly:
-		var ga = ga || window["GoogleAnalyticsObject"];
+		if ( typeof(ga) !== "function" ) {
+			console.log("Tracking-JS failed. Google Analytics Object not loaded.");
+			return;
+		}
 
 		ga( "create", trackingId, "auto" );
 		
