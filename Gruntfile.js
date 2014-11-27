@@ -20,7 +20,11 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
         pkg: grunt.file.readJSON("package.json"),
         concat: {
             build: {
-                src: "src/**/*.js",
+                src: [
+                    "src/tracking.js",
+                    "src/addEventListener-polyfill.js",
+                    "src/events.js"
+                ],
                 dest: "dist/<%= pkg.name %>.js",
                 nonull: true
             }
@@ -37,7 +41,8 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
         jshint: {
             all: {
                 src: [
-                    "src/**/*.js", 
+                    "src/**/*.js",
+                    "!src/addEventListener-polyfill.js",
                     "Gruntfile.js", 
                     "test/**/*.js",
                     "!dist/**/*.min.js"
