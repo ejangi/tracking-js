@@ -41,6 +41,7 @@
 
 	var analyticsUrl = "//www.google-analytics.com/analytics.js",
 		analyticsDebugUrl = "//www.google-analytics.com/analytics_debug.js",
+		linkidUrl = "//www.google-analytics.com/plugins/ua/linkid.js",
 		trackingId = meta( "ga-trackingid" ) || null,
 		requires = meta( "ga-requires" ).split( "," ) || [],
 		debug = meta( "ga-debug" ) || false,
@@ -77,7 +78,8 @@
 		}
 
 		if ( requires.indexOf( "linkid" ) > -1 ) {
-			ga( "require", "linkid", "linkid.js" );
+			linkidUrl = gaProtocol() + linkidUrl;
+			ga( "require", "linkid",  linkidUrl );
 		}
 
 		for ( var i = 0; i < campaignFields.length; i++ ) {
