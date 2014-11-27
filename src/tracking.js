@@ -84,7 +84,11 @@ var TrackingJS = ( function( window, document, undefined ) {
 				return;
 			}
 
-			ga( "create", trackingId, "auto" );
+			if ( userId.length > 0 ) {
+				ga( "create", trackingId, "auto", { "userId": userId } );
+			} else {
+				ga( "create", trackingId, "auto" );
+			}
 			
 			if ( features.indexOf( "displayfeatures" ) > -1 ) {
 				ga( "require", "displayfeatures" );

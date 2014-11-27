@@ -51,13 +51,20 @@ To enable all features, you can use a comma-separated list (no spaces):
 - a[href$=zip|exe|dmg|pdf|doc.*|xls.*|ppt.*|mp3|txt|rar|wma|mov|avi|wmv|flv|wav].
 </small>
 
+User ID
+------------
+
+If you wish to take advantage of Google Analytics's [User ID](https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id) tracking feature, you can simply set the ga-userid variable using the following meta tag:
+
+<pre><code>&#x3C;meta name=&#x22;ga-userid&#x22; content=&#x22;[your user id]&#x22;&#x3E;</code></pre>
+
 Debugging
 ------------
 
-You can turn Google Analytic's debugging on by including the following meta tag:
+You can turn Google Analytics's debugging on by including the following meta tag:
 
 <pre><code>&#x3C;meta name=&#x22;ga-debug&#x22; content=&#x22;true&#x22;&#x3E;</code></pre>
 
-Similarly, if you want Google Analytic's full stack track in the console, include the following meta tag as well as the above:
+Similarly, if you want Google Analytics's full stack track in the console, include the following meta tag as well as the above:
 
 <pre><code>&#x3C;meta name=&#x22;ga-trace&#x22; content=&#x22;true&#x22;&#x3E;</code></pre>
