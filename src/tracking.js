@@ -52,13 +52,13 @@ var TrackingJS = ( function( window, document, undefined ) {
 
 	var init = (function() {
 		if ( trackingId !== null && trackingId.length > 0 ) {
-			if ( debug && debug === "true" ) {
+			if ( debug === "true" ) {
 				debug = true;
 			} else {
 				debug = false;
 			}
 
-			if ( trace && trace === "true" ) {
+			if ( trace === "true" ) {
 				trace = true;
 			} else {
 				trace = false;
