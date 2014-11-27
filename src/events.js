@@ -8,7 +8,7 @@ TrackingJS.Events = ( function( parent ) {
 			track = true,
 			href = ( typeof( el.href ) !== "undefined" ) ? el.href : "",
 			bookmarkRegexp = new RegExp( "("+parent.window.location.pathname+")?#.+", "i" ),
-			isThisDomain = href.match( document.domain.split( "." ).reverse()[1] + "." + document.domain.split( "." ).reverse()[0] );
+			isThisDomain = href.match( parent.document.domain.split( "." ).reverse()[1] + "." + parent.document.domain.split( "." ).reverse()[0] );
 
 		if ( !href.match( /^javascript:/i ) ) {
 			var elEv = []; elEv.value = 0, elEv.non_i = false;
