@@ -89,6 +89,8 @@ var TrackingJS = ( function( window, document, undefined ) {
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
 			})(window,document,"script",analyticsUrl,"ga");
 
+			var ga = window[window["GoogleAnalyticsObject"] || "ga"];
+
 			if ( typeof(ga) !== "function" ) {
 				console.log("Tracking-JS failed. Google Analytics Object not loaded.");
 				return;
