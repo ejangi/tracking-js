@@ -8,5 +8,5 @@
 .bower.json
 .sizecache.json
 
-/dist
+/dist/*.map
 /node_modules
