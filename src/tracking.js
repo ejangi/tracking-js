@@ -110,10 +110,6 @@ var TrackingJS = ( function( window, document, undefined ) {
 					ga( "set", dimensions[i], meta( dimensions[i] ) );
 				}
 			}
-
-			if ( userId.length > 0 ) {
-				ga( "set", "&uid", userId );
-			}
 			
 			ga( "send", "pageview" );
 		}
