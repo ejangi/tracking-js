@@ -37,7 +37,10 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
         jshint: {
             all: {
                 src: [
-                    "src/**/*.js", "Gruntfile.js", "test/**/*.js", "build/**/*.js"
+                    "src/**/*.js", 
+                    "Gruntfile.js", 
+                    "test/**/*.js",
+                    "!dist/**/*.min.js"
                 ],
                 options: {
                   jshintrc: true
@@ -50,7 +53,7 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
         },
         watch: {
             files: [ "<%= jshint.all.src %>" ],
-            tasks: ['jshint', 'concat', 'uglify']
+            tasks: ['jshint:all', 'concat']
         }
     });
 
@@ -61,8 +64,9 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask( "lint", [ "jshint" ] );
+    grunt.registerTask( "build", [ "jshint:all", "concat", "uglify", "jshint:dist" ] );
 
     // Default task(s).
     grunt.registerTask('default', ['concat', 'uglify']);
 
-}
+};
