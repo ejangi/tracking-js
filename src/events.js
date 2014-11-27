@@ -70,7 +70,7 @@ TrackingJS.Events = ( function( parent ) {
 	};
 
 	var init = ( function() {
-		if ( parent.requires.indexOf( "events" ) === -1 ) {
+		if ( parent.features.indexOf( "events" ) === -1 ) {
 			return;
 		}
 

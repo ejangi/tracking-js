@@ -43,7 +43,7 @@ var TrackingJS = ( function( window, document, undefined ) {
 		analyticsDebugUrl = "//www.google-analytics.com/analytics_debug.js",
 		linkidUrl = "//www.google-analytics.com/plugins/ua/linkid.js",
 		trackingId = meta( "ga-trackingid" ) || null,
-		requires = meta( "ga-requires" ).split( "," ) || [],
+		features = meta( "ga-features" ).split( "," ) || [],
 		debug = meta( "ga-debug" ) || false,
 		trace = meta( "ga-trace" ) || false,
 		campaignFields = [ "campaignName", "campaignSource", "campaignMedium", "campaignContent", "campaignKeyword" ],
@@ -86,11 +86,11 @@ var TrackingJS = ( function( window, document, undefined ) {
 
 			ga( "create", trackingId, "auto" );
 			
-			if ( requires.indexOf( "displayfeatures" ) > -1 ) {
+			if ( features.indexOf( "displayfeatures" ) > -1 ) {
 				ga( "require", "displayfeatures" );
 			}
 
-			if ( requires.indexOf( "linkid" ) > -1 ) {
+			if ( features.indexOf( "linkid" ) > -1 ) {
 				linkidUrl = gaProtocol() + linkidUrl;
 				ga( "require", "linkid",  linkidUrl );
 			}
@@ -124,7 +124,7 @@ var TrackingJS = ( function( window, document, undefined ) {
 		analyticsDebugUrl: analyticsDebugUrl,
 		linkidUrl: linkidUrl,
 		trackingId: trackingId,
-		requires: requires,
+		features: features,
 		debug: debug,
 		trace: trace,
 		campaignFields: campaignFields,
