@@ -11,14 +11,14 @@
 	"smarttabs": true,
 	"trailing": true,
 	"undef": true,
-	"unused": true,
+	"unused": false,
 
 	"sub": true,
 
 	"browser": true,
 
 	"globals": {
-		"jQuery": true,
+		"TrackingJS": true,
 		"define": true,
 		"module": true,
 		"noGlobal": true,
