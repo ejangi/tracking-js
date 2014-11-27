@@ -1,0 +1,36 @@
+{
+  "name": "tracking-js",
+  "version": "1.0.0",
+  "description": "Self Contained Google Analytics Initialiser with basic Event Tracking and Enhanced Link Tracking enabled by default.",
+  "main": "dist/tracking.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ejangi/tracking-js.git"
+  },
+  "keywords": [
+    "tracking",
+    "analytics",
+    "stats",
+    "urchin"
+  ],
+  "author": "James Angus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ejangi/tracking-js/issues"
+  },
+  "homepage": "https://github.com/ejangi/tracking-js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs-checker": "^0.8.1"
+  }
+}
