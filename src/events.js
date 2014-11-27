@@ -7,14 +7,22 @@ TrackingJS.Events = ( function( parent ) {
 		var el = event.target,
 			track = true,
 			href = ( typeof( el.href ) !== "undefined" ) ? el.href : "",
+			bookmarkRegexp = new RegExp( "("+parent.window.location.pathname+")?#.+", "i" ),
 			isThisDomain = href.match( document.domain.split( "." ).reverse()[1] + "." + document.domain.split( "." ).reverse()[0] );
-		
+
 		if ( !href.match( /^javascript:/i ) ) {
 			var elEv = []; elEv.value = 0, elEv.non_i = false;
 			if ( href.match( /^mailto\:/i ) ) {
 				elEv.category = "email";
 				elEv.action = "click";
 				elEv.label = href;
+				elEv.loc = href;
+			}
+			else if ( href.match( bookmarkRegexp ) ) {
+				elEv.category = "bookmark";
+				elEv.action = "click";
+				elEv.label = href;
+				elEv.non_i = true;
 				elEv.loc = href;
 			}
 			else if ( href.match( filetypes ) ) {
@@ -28,13 +36,6 @@ TrackingJS.Events = ( function( parent ) {
 				elEv.category = "external";
 				elEv.action = "click";
 				elEv.label = href;
-				elEv.loc = href;
-			}
-			else if ( href.match( /^#/i ) ) {
-				elEv.category = "bookmark";
-				elEv.action = "click";
-				elEv.label = href;
-				elEv.non_i = true;
 				elEv.loc = href;
 			}
 			else if ( href.match( /^tel\:/i ) ) {
