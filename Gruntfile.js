@@ -18,24 +18,22 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
   // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
-        concat: {
-            build: {
-                src: [
-                    "src/tracking.js",
-                    "src/addEventListener-polyfill.js",
-                    "src/events.js"
-                ],
-                dest: "dist/<%= pkg.name %>.js",
-                nonull: true
-            }
-        },
         uglify: {
-          options: {
-            banner: "/*! <%= pkg.name %> <%= grunt.template.today('yyyy-mm-dd') %> */\n"
+            options: {
+                banner: "/*! <%= pkg.name %> <%= grunt.template.today('yyyy-mm-dd') %> */\n",
+                sourceMap: true
             },
             build: {
-                src: "dist/<%= pkg.name %>.js",
-                dest: "dist/<%= pkg.name %>.min.js"
+                files: {
+                    "dist/<%= pkg.name %>.min.js": [
+                        "src/tracking.js",
+                        "src/addEventListener-polyfill.js",
+                        "src/events.js"
+                    ]
+                },
+                options: {
+                    sourceMap: true
+                }
             }
         },
         jshint: {
@@ -58,7 +56,7 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
         },
         watch: {
             files: [ "<%= jshint.all.src %>" ],
-            tasks: ["jshint:all", "concat", "uglify"],
+            tasks: ["jshint:all", "uglify"],
             options: {
                 livereload: true
             }
@@ -66,15 +64,14 @@ var srcHintOptions = readOptionalJSON( "src/.jshintrc" );
     });
 
     // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-watch");
 
     grunt.registerTask( "lint", [ "jshint" ] );
-    grunt.registerTask( "build", [ "jshint:all", "concat", "uglify", "jshint:dist" ] );
+    grunt.registerTask( "build", [ "jshint:all", "uglify", "jshint:dist" ] );
 
     // Default task(s).
-    grunt.registerTask("default", ["concat", "uglify"]);
+    grunt.registerTask("default", [ "uglify" ]);
 
 };
