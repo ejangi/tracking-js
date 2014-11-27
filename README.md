@@ -3,6 +3,8 @@ Tracking JS
 
 This simple file is a self contained Google Analytics initialiser with basic Event Tracking and Enhanced Link Tracking enabled by default.
 
+Currently, Tracking JS only supports Universal Analytics.
+
 Usage
 ---------
 
