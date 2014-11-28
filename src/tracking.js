@@ -24,7 +24,7 @@ var TrackingJS = ( function( window, document, undefined ) {
 		var metalre = new RegExp( "^" + key + ".*" ); 
 		var returns = [];
 		for ( var i = 0; i < metas.length; i++ ) { 
-			if ( metas[i].getAttribute( "name" ).match( metalre ) ) { 
+			if ( metas[i].getAttribute( "name" ) !== null && metas[i].getAttribute( "name" ).match( metalre ) ) { 
 				returns.push( metas[i] );
 			}
 		} 
